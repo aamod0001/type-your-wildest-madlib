@@ -6,16 +6,14 @@ def main():
     guess(min, max)
 
 def guess(minimum, maximum):
-    status = False
     random_number = randint(minimum, maximum)
-    while status == False:
-        guess_number = int(input("input your guessed number"))
+    guess_number = minimum - 1
+    while guess_number != random_number:
+        guess_number = int(input("input your guessed number: "))
         if guess_number > random_number:
             print("the guessed number is too high")
         elif guess_number < random_number:
             print("your guessed number is too low")
-        else:
-            print("you have successfully guessed the correct number")
-            status = True
+    print("you have successfully guessed the correct number")
 
 main()
