@@ -16,4 +16,5 @@ def guess(minimum, maximum):
             print("your guessed number is too low")
     print("you have successfully guessed the correct number")
 
-main()
+if __name__ == "__main__":
+    main()
