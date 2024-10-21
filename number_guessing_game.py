@@ -3,7 +3,11 @@ from random import randint
 def main():
     min = int(input("what is the minimum number you want to guess: "))
     max = int(input("ehat is the maximum number you want to guess: "))
-    guess(min, max)
+    game = input("which game do you want to play h or c")
+    if game == "h":
+        guess(min, max)
+    elif game == "c":
+        computer_guess(min, max)
 
 def guess(minimum, maximum):
     random_number = randint(minimum, maximum)
@@ -16,5 +20,16 @@ def guess(minimum, maximum):
             print("your guessed number is too low")
     print("you have successfully guessed the correct number")
 
-if __name__ == "__main__":
-    main()
+def computer_guess(low, high):
+    minimum = low
+    maximum = high
+    feedback = ""
+    while feedback != "t":
+        guess = randint(minimum , maximum)
+        feedback = input(f"is {guess} low high or true: ")
+        if feedback == "l":
+            minimum = guess + 1
+        elif feedback == "h":
+            maximum = guess - 1
+    print(f"I have guessed the {guess} correctly!!")
+
