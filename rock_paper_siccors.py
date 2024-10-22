@@ -1,6 +1,17 @@
 from random import choice
 
 # Rock Paper Scissors
+def number():
+    x = input("enter odd numeric value for game point: ")
+    while x.isnumeric() == False:
+        x = input("the entered value is not correct, please enter again: ")
+    return x
+
+def check():
+    x = int(number())
+    while x%2 == 0:
+        x = int(number())
+    return x
 
 def game(game_point):
     users_score = 0
@@ -15,12 +26,12 @@ def game(game_point):
         computers_choice = choice(['r', 'p', 's'])
         if users_choice == computers_choice:
             print(f"Computer has chosen {computers_choice}. It's a draw!")
-        elif winner(users_choice, computers_choice) == "computer":
-            print(f"Computer has chosen {computers_choice}. Computer wins!")
+        elif winner(users_choice, computers_choice):
             computers_score += 1
+            print(f"Computer has chosen {computers_choice}. Computer wins \n Computers score: {computers_score} \n Users score: {users_score}")
         else:
-            print(f"Computer has chosen {computers_choice}. You win!")
             users_score += 1
+            print(f"Computer has chosen {computers_choice}. You win! \n Computers score: {computers_score} \n Users score: {users_score}")
 
     if users_score > computers_score:
         print("You have won the game!")
@@ -28,11 +39,7 @@ def game(game_point):
         print("Computer has won the game!")
 
 def winner(user, computer):
-    if (user == 'r' and computer == 's') or (user == 'p' and computer == 'r') or (user == 's' and computer == 'p'):
-        return "user"
-    elif (user == 's' and computer == 'r') or (user == 'r' and computer == 'p') or (user == 'p' and computer == 's'):
-        return "computer"
-    else:
-        return "draw"
+    if (user == 's' and computer == 'r') or (user == 'r' and computer == 'p') or (user == 'p' and computer == 's'):
+        return True
 
-game(1)
+game(check())
