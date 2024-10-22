@@ -1,6 +1,7 @@
 from random import choice
 
 # Rock Paper Scissors
+# Ruthlessness Max Only one winner
 def number():
     x = input("enter odd numeric value for game point: ")
     while x.isnumeric() == False:
